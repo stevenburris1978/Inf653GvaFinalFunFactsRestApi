@@ -5,7 +5,9 @@ const whiteList = [
     "http://localhost:3000",
     "https://kayscrochetmobileapp-5c1e1888702b.herokuapp.com",
     "https://www.kayscrochet.us",
-    "https://kayscrochetapp-e13180bf49a3.herokuapp.com/"
+    "https://kayscrochetapp-e13180bf49a3.herokuapp.com/",
+    "https://youthful-skitter-snake.glitch.me/",
+    "https://incredible-scythe-mouse.glitch.me/"
   ];
   
   const corsOptions = {

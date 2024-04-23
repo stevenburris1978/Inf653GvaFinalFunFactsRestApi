@@ -2,9 +2,9 @@
   "name": "funfacts-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "ExpressServer.js",
+  "main": "expressServer.js",
   "scripts": {
-    "start": "node ExpressServer.js",
+    "start": "nodemon expressServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
