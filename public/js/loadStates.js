@@ -23,15 +23,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const isEditingFunFacts = this.value === "editFunFacts";
         funFactManager.style.display = isEditingFunFacts ? "block" : "none";
         stateSelector.disabled = ["", "contiguous", "noncontiguous", "editFunFacts"].includes(this.value);
+        submitButton.disabled = ["", "contiguous", "noncontiguous"].includes(this.value);
 
         clearDisplay(); // Clear previous content on selection change
 
         if (["", "contiguous", "noncontiguous"].includes(this.value)) {
-            if (this.value === "") {
-                fetchAllStates();
-            } else {
-                fetchStatesByContiguity(this.value === "contiguous");
-            }
+            fetchStatesByContiguity(this.value === "contiguous");
+        } else {
+            submitButton.disabled = false;
         }
     });
 
@@ -42,7 +41,12 @@ document.addEventListener('DOMContentLoaded', function () {
         clearDisplay(); // Clear previous content before fetching new data
 
         if (factSelection === "" && selectedStateCode === "") {
-            alert('Both "All States Facts" and "All States" need to be selected to see all states\' facts.');
+            fetchAllStates();
+            return;
+        }
+
+        if (selectedStateCode === "") {
+            stateInfo.innerHTML = '<p>Please select a different state.</p>';
             return;
         }
 
@@ -80,7 +84,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function fetchStatesByContiguity(isContiguous) {
-        fetch(`/states/?contig=${isContiguous}`)
+        let query = isContiguous ? "contiguous" : "noncontiguous";
+        fetch(`/states/?contig=${query}`)
         .then(response => response.json())
         .then(data => populateAllStates(data))
         .catch(error => console.error('Error fetching states:', error));
