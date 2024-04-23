@@ -4,8 +4,7 @@
   "description": "",
   "main": "expressServer.js",
   "scripts": {
-    "start": "nodemon expressServer.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon expressServer.js"
   },
   "keywords": [],
   "author": "",
