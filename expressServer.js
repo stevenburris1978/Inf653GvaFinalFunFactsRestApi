@@ -23,13 +23,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // To handel static files 
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Route Handlers
 app.use("/", require("./routes/root"));
 
 // API router
 app.use("/states", require("./routes/api/states"));
+
+// Serve index.html file for root route
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "index.html"));
+});
 
 // 404 route for un-defined
 app.all("*", (req, res) => {
