@@ -4,8 +4,7 @@
   "description": "",
   "main": "expressServer.js",
   "scripts": {
-    "start": "node expressServer.js",
-    "dev": "nodemon ./expressServer.js"
+    "start": "nodemon ./expressServer.js"
   },
   "keywords": [],
   "author": "",
@@ -16,12 +15,10 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.3.1",
-    "uuid": "^9.0.0"
-  },
-  "devDependencies": {
+    "uuid": "^9.0.0",
     "nodemon": "^2.0.22"
   },
   "engines": {
-    "node": "14.x"
+    "node": "16.20.1"
   }
 }
