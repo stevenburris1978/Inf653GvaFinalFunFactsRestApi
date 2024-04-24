@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const addFunFactButton = document.getElementById('addFunFact');
     const currentFunFacts = document.getElementById('currentFunFacts');
 
-    // Populate state codes dropdown
     fetch('/states').then(response => response.json()).then(data => {
         data.forEach(state => {
             const option = document.createElement('option');
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         stateSelector.disabled = ["", "contiguous", "noncontiguous", "editFunFacts"].includes(this.value);
         submitButton.disabled = ["", "contiguous", "noncontiguous"].includes(this.value);
 
-        clearDisplay(); // Clear previous content on selection change
+        clearDisplay(); 
 
         if (["", "contiguous", "noncontiguous"].includes(this.value)) {
             fetchStatesByContiguity(this.value === "contiguous");
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const factSelection = factSelector.value;
         const selectedStateCode = stateSelector.value;
 
-        clearDisplay(); // Clear previous content before fetching new data
+        clearDisplay(); 
 
         if (factSelection === "" && selectedStateCode === "") {
             fetchAllStates();
@@ -46,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (selectedStateCode === "") {
-            stateInfo.innerHTML = '<p>Please select a different state.</p>';
+            stateInfo.innerHTML = '<p>Please select only one state.</p>';
             return;
         }
 
@@ -68,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => console.error('Error fetching state details or fact:', error));
     });
 
-    // Initially display all states facts when the page loads
+    // display all states facts
     fetchAllStates();
 
     function clearDisplay() {
@@ -92,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function populateAllStates(data) {
-        statesList.innerHTML = ''; // Clear previous states list
+        statesList.innerHTML = ''; 
         data.forEach(state => {
             const element = document.createElement('div');
             element.className = 'state-info';
